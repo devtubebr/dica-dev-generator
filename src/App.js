@@ -35,7 +35,9 @@ class App extends React.Component {
     }
   };
 
-  download() {
+  handleSubmit = e => {
+    e.preventDefault();
+
     const divStage = document.querySelector('div.stage');
 
     html2canvas(divStage).then(function(canvas) {
@@ -50,9 +52,10 @@ class App extends React.Component {
 
         <div className="row">
           <div className="col-md-4">
-            <form>
+            <form onSubmit={this.handleSubmit} noValidate>
               <div className="form-group">
                 <input
+                  autoFocus
                   type="text"
                   name='title'
                   value={this.state.record.title}
@@ -84,6 +87,10 @@ class App extends React.Component {
                   onChange={this.handleChange}
                   className='form-control'
                   placeholder='Descrição da dica...' />
+
+                  <small class="form-text text-muted">
+                    <i className="fa fa-info-circle"></i> É recomendado no máximo de <strong>3 LINHAS</strong> de descrição na imagem final.
+                  </small>
               </div>
 
               <div className="form-group">
@@ -107,7 +114,7 @@ class App extends React.Component {
                   placeholder='Snippet de código...' />
               </div>
 
-              <button type='submit' onClick={this.download} className="btn btn-primary btn-block btn-lg">
+              <button type='submit' className="btn btn-primary btn-block btn-lg">
                 <i className="fa fa-download"></i> Download
               </button>
             </form>
