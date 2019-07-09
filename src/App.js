@@ -1,15 +1,16 @@
 import React from 'react';
 import './App.css';
 import logo from './assets/images/logo-devtube.png';
-import logoPhp from './assets/images/logo-php.png';
 import demoEditor from './assets/images/demo-code.png';
 import html2canvas from 'html2canvas';
+import languages from './data/languages';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      selectedLanguage: {},
       record: {
         title: '',
         language: '',
@@ -27,6 +28,11 @@ class App extends React.Component {
         [e.target.name]: [e.target.value]
       },
     });
+
+    if (e.target.name === 'language') {
+      const selectedLanguage = languages.find(lang => lang.id === parseInt(e.target.value));
+      this.setState({ ...this.state, selectedLanguage });
+    }
   };
 
   download() {
@@ -62,11 +68,11 @@ class App extends React.Component {
                   value={this.state.record.language}
                   onChange={this.handleChange}
                   required
-                  className='form-control'
-                >
+                  className='form-control'>
                   <option>:: Linguagem da Dica ::</option>
-                  <option value='1'>Javascript</option>
-                  <option value='2'>PHP</option>
+                  {
+                    languages.map(lang => <option key={lang.id} value={lang.id}>{lang.name}</option>)
+                  }
                 </select>
               </div>
 
@@ -110,7 +116,10 @@ class App extends React.Component {
           <div className="col-md-8">
             <div className="stage">
               <header>
-                <img src={logoPhp} width="85" alt='Logo PHP' />
+                <img
+                  src={this.state.selectedLanguage.src}
+                  width={this.state.selectedLanguage.width}
+                  alt={this.state.selectedLanguage.name} />
                 <h2 className="dica-title">
                   { this.state.record.title }
                 </h2>
