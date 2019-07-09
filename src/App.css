@@ -1,33 +1,75 @@
-.App {
+div.stage {
+  width: 650px;
+  height: 650px;
+  background: red;
+  margin: 0 auto;
+  background: #1D2437;
+  color: #fff;
+}
+
+header {
+  padding: 20px 20px;
+  height: 82px;
+}
+
+header h2.dica-title {
+  text-transform: uppercase;
+  color: #fff;
   text-align: center;
+  font-weight: 700;
+  margin-bottom: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 35px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+header img {
+  position: absolute;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+div.body {
+  padding: 0 20px;
+  height: 488px;
+  font-family: 'Nanum Gothic', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+div.body div.screenshot img {
+  max-width: 610px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer {
+  background: #0F1220;
+  color: #fff;
+  padding: 25px 15px;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+footer ul {
+  float: right;
+  margin-bottom: 0;
+}
+
+footer ul li {
+  list-style-type: none;
+  float: left;
+  margin-right: 20px;
+}
+
+footer ul li i {
+  font-size: 30px !important;
+  margin-right: 8px;
+  float: left;
+}
+
+footer ul li span {
+  margin-top: 7px;
+  float: left;
+}
+
+footer ul li:last-child {
+  margin-right: 0;
+}
+
+textarea {
+  height: 180px !important;
 }
