@@ -1,19 +1,19 @@
 import React from 'react';
 import './App.css';
+import classnames from 'classnames';
 import logo from './assets/images/logo-devtube.png';
-import demoEditor from './assets/images/demo-code.png';
 import html2canvas from 'html2canvas';
-import languages from './data/languages';
+import { languages, getLanguageById, LANGUAGE_PHP } from './data/languages';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedLanguage: {},
+      selectedLanguage: getLanguageById(LANGUAGE_PHP),
       record: {
         title: '',
-        language: '',
+        language: LANGUAGE_PHP,
         description: '',
         screenshot: '',
         snippet: ''
@@ -30,8 +30,25 @@ class App extends React.Component {
     });
 
     if (e.target.name === 'language') {
-      const selectedLanguage = languages.find(lang => lang.id === parseInt(e.target.value));
-      this.setState({ ...this.state, selectedLanguage });
+      const value = e.target.value;
+      const selectedLanguage = (value !== '' ? getLanguageById(value) : {});
+
+      this.setState({ selectedLanguage });
+    }
+
+    if (e.target.name === 'screenshot') {
+      const fileReader = new FileReader();
+
+      fileReader.onload = e => {
+        this.setState({
+          record: {
+            ...this.state.record,
+            screenshot: e.target.result
+          }
+        })
+      }
+
+      fileReader.readAsDataURL(e.target.files[0]);
     }
   };
 
@@ -45,6 +62,15 @@ class App extends React.Component {
     });
   }
 
+  removeScreenshot = e => {
+    this.setState({
+      record: {
+        ...this.state.record,
+        screenshot: '' 
+      }
+    })
+  }
+
   render () {
     return (
       <div className="container">
@@ -54,8 +80,22 @@ class App extends React.Component {
           <div className="col-md-4">
             <form onSubmit={this.handleSubmit} noValidate>
               <div className="form-group">
-                <input
+                <select
                   autoFocus
+                  name='language'
+                  value={this.state.record.language}
+                  onChange={this.handleChange}
+                  required
+                  className='form-control'>
+                  <option value=''>:: Linguagem da Dica ::</option>
+                  {
+                    languages.map(lang => <option key={lang.id} value={lang.id}>{lang.name}</option>)
+                  }
+                </select>
+              </div>
+
+              <div className="form-group">
+                <input
                   type="text"
                   name='title'
                   value={this.state.record.title}
@@ -63,20 +103,6 @@ class App extends React.Component {
                   required
                   className='form-control'
                   placeholder='Título da dica...' />
-              </div>
-
-              <div className="form-group">
-                <select
-                  name='language'
-                  value={this.state.record.language}
-                  onChange={this.handleChange}
-                  required
-                  className='form-control'>
-                  <option>:: Linguagem da Dica ::</option>
-                  {
-                    languages.map(lang => <option key={lang.id} value={lang.id}>{lang.name}</option>)
-                  }
-                </select>
               </div>
 
               <div className="form-group">
@@ -88,7 +114,7 @@ class App extends React.Component {
                   className='form-control'
                   placeholder='Descrição da dica...' />
 
-                  <small class="form-text text-muted">
+                  <small className="form-text text-muted">
                     <i className="fa fa-info-circle"></i> É recomendado no máximo de <strong>3 LINHAS</strong> de descrição na imagem final.
                   </small>
               </div>
@@ -96,12 +122,20 @@ class App extends React.Component {
               <div className="form-group">
                 <input
                   type='file'
-                  value={this.state.record.screenshot}
+                  accept="image/*"
+                  ref='screenshotInput'
                   onChange={this.handleChange}
                   name='screenshot'
                   required
                   className='form-control'
                   placeholder='Screenshot da dica...' />
+
+                  <button
+                    type='button'
+                    onClick={this.removeScreenshot}
+                    className={classnames('btn btn-link btn-sm text-danger', {'d-none': this.state.record.screenshot === ''})}>
+                      <i className="fa fa-trash"></i> Remover Screenshot
+                  </button>
               </div>
 
               <div className="form-group">
@@ -133,8 +167,8 @@ class App extends React.Component {
               </header>
               <div className='body'>
                 <p>{ this.state.record.description }</p>
-                <div className='screenshot'>
-                  <img src={demoEditor} alt="Code" />
+                <div className={classnames('screenshot', { 'd-none': this.state.record.screenshot === '' })}>
+                  <img src={this.state.record.screenshot} alt="Code" />
                 </div>
               </div>
               <footer>

@@ -1,4 +1,22 @@
-const languages = [
+/**
+ * @type Number
+ */
+export const LANGUAGE_PHP = 1;
+
+/**
+ * @type Number
+ */
+export const LANGUAGE_JAVASCRIPT = 2;
+
+/**
+ * @type Function
+ */
+export const getLanguageById = id => languages.find(lang => lang.id === parseInt(id));
+
+/**
+ * @type Array<Object>
+ */
+export const languages = [
   {
     id: 2,
     name: 'Javascript',
@@ -12,5 +30,3 @@ const languages = [
     width: '85'
   }
 ];
-
-export default languages;
