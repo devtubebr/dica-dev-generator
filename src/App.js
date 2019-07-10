@@ -34,6 +34,8 @@ class App extends React.Component {
       const value = e.target.value;
       const selectedLanguage = (value !== '' ? languages[value] : {});
 
+      console.log(value);
+
       this.setState({ selectedLanguage });
     }
 

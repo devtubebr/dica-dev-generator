@@ -15,7 +15,8 @@ const Form = props => {
           className='form-control'>
           <option value=''>:: Linguagem da Dica ::</option>
           {
-            props.languages.map(lang => <option key={lang.id} value={lang.id}>{lang.name}</option>)
+            props.languages.map((lang, key) =>
+              <option key={key} value={lang.id}>{lang.name}</option>)
           }
         </select>
       </div>
