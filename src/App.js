@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import html2canvas from 'html2canvas';
-import { getLanguageById, LANGUAGE_PHP, languages } from './data/languages';
+import { languages, languagesToArray, languagesEnum } from './data/languages';
 import { saveAs } from 'file-saver';
 import Form from './components/Form/Form';
 import BlueTemplate from './components/Templates/BlueTemplate/BlueTemplate';
@@ -11,10 +11,10 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      selectedLanguage: getLanguageById(LANGUAGE_PHP),
+      selectedLanguage: languages[languagesEnum.PHP],
       record: {
         title: '',
-        language: LANGUAGE_PHP,
+        language: languagesEnum.PHP,
         description: '',
         screenshot: '',
         snippet: ''
@@ -32,7 +32,7 @@ class App extends React.Component {
 
     if (e.target.name === 'language') {
       const value = e.target.value;
-      const selectedLanguage = (value !== '' ? getLanguageById(value) : {});
+      const selectedLanguage = (value !== '' ? languages[value] : {});
 
       this.setState({ selectedLanguage });
     }
@@ -83,7 +83,7 @@ class App extends React.Component {
         <div className="row">
           <div className="col-md-4">
             <Form
-              languages={languages}
+              languages={languagesToArray()}
               record={this.state.record}
               onSubmit={this.handleSubmit}
               removeScreenshot={this.removeScreenshot}
