@@ -19,7 +19,7 @@ export const languages = Object.freeze({
     id: languagesEnum.CSS,
     name: 'CSS',
     src: '/assets/images/logo-css.png',
-    width: '45'
+    width: '33'
   },
   [languagesEnum.CSHARP]: {
     id: languagesEnum.CSHARP,
@@ -31,7 +31,7 @@ export const languages = Object.freeze({
     id: languagesEnum.HTML,
     name: 'HTML',
     src: '/assets/images/logo-html.png',
-    width: '45'
+    width: '35'
   },
   [languagesEnum.JAVASCRIPT]: {
     id: languagesEnum.JAVASCRIPT,
@@ -49,13 +49,13 @@ export const languages = Object.freeze({
     id: languagesEnum.PYTHON,
     name: 'Python',
     src: '/assets/images/logo-python.png',
-    width: '85'
+    width: '55'
   },
   [languagesEnum.SQL]: {
     id: languagesEnum.SQL,
     name: 'SQL',
     src: '/assets/images/logo-sql.png',
-    width: '85'
+    width: '50'
   }
 });
 
