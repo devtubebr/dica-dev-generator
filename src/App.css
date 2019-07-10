@@ -1,3 +1,12 @@
+body {
+  background: #F5F5F8;
+}
+
+h1.main-title {
+  font-weight: lighter;
+  letter-spacing: -1px;
+}
+
 div.stage {
   width: 650px;
   height: 650px;
@@ -28,12 +37,24 @@ header img {
 
 div.body {
   padding: 0 20px;
-  height: 488px;
+  height: 457px;
   font-family: 'Nanum Gothic', sans-serif;
+}
+
+div.body p {
+  height: 72px;
 }
 
 div.body div.screenshot img {
   max-width: 610px;
+}
+
+div.hashtag {
+  color: #EF6857;
+  font-style: italic;
+  font-size: 17px;
+  text-align: right;
+  padding: 0 15px 6px
 }
 
 footer {

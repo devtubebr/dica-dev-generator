@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import logo from './assets/images/logo-devtube.png';
 import html2canvas from 'html2canvas';
 import { languages, getLanguageById, LANGUAGE_PHP } from './data/languages';
+import { saveAs } from 'file-saver';
 
 class App extends React.Component {
   constructor(props) {
@@ -57,16 +58,15 @@ class App extends React.Component {
 
     const divStage = document.querySelector('div.stage');
 
-    html2canvas(divStage).then(function(canvas) {
-      document.body.appendChild(canvas);
-    });
+    html2canvas(divStage)
+      .then(canvas => canvas.toBlob(blob => saveAs(blob, 'dica-do-dev.png')))
   }
 
   removeScreenshot = e => {
     this.setState({
       record: {
         ...this.state.record,
-        screenshot: '' 
+        screenshot: ''
       }
     })
   }
@@ -74,11 +74,15 @@ class App extends React.Component {
   render () {
     return (
       <div className="container">
-        <h1 className="text-center">Gerador de Dica do Dev</h1>
+        <h1 className="main-title text-center">
+          Gerador de Dica do Dev
+        </h1>
+
+        <hr />
 
         <div className="row">
           <div className="col-md-4">
-            <form onSubmit={this.handleSubmit} noValidate>
+            <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <select
                   autoFocus
@@ -138,7 +142,7 @@ class App extends React.Component {
                   </button>
               </div>
 
-              <div className="form-group">
+              {/* <div className="form-group">
                 <textarea
                   name='snippet'
                   required
@@ -146,7 +150,7 @@ class App extends React.Component {
                   onChange={this.handleChange}
                   className='form-control'
                   placeholder='Snippet de código...' />
-              </div>
+              </div> */}
 
               <button type='submit' className="btn btn-primary btn-block btn-lg">
                 <i className="fa fa-download"></i> Download
@@ -170,6 +174,9 @@ class App extends React.Component {
                 <div className={classnames('screenshot', { 'd-none': this.state.record.screenshot === '' })}>
                   <img src={this.state.record.screenshot} alt="Code" />
                 </div>
+              </div>
+              <div className='hashtag'>
+                #dica<strong>Do</strong>Dev
               </div>
               <footer>
                 <img src={logo} width="120" alt='Logo Devtube' />
