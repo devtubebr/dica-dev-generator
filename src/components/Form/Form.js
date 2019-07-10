@@ -1,5 +1,4 @@
 import React from 'react';
-import { languages } from '../../data/languages';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -16,7 +15,7 @@ const Form = props => {
           className='form-control'>
           <option value=''>:: Linguagem da Dica ::</option>
           {
-            languages.map(lang => <option key={lang.id} value={lang.id}>{lang.name}</option>)
+            props.languages.map(lang => <option key={lang.id} value={lang.id}>{lang.name}</option>)
           }
         </select>
       </div>
@@ -85,7 +84,12 @@ Form.propTypes = {
   record: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  removeScreenshot: PropTypes.func.isRequired
+  removeScreenshot: PropTypes.func.isRequired,
+  languages: PropTypes.array
+};
+
+Form.defaultValues = {
+  languages: []
 };
 
 export default Form;

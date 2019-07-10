@@ -1,7 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
-import logo from '../../assets/images/logo-devtube.png';
+import logo from '../../../assets/images/logo-devtube.png';
 import PropTypes from 'prop-types';
+import './BlueTemplate.css';
 
 const BlueTemplate = props => {
   return (

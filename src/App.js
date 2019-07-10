@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 import html2canvas from 'html2canvas';
-import { getLanguageById, LANGUAGE_PHP } from './data/languages';
+import { getLanguageById, LANGUAGE_PHP, languages } from './data/languages';
 import { saveAs } from 'file-saver';
 import Form from './components/Form/Form';
-import BlueTemplate from './components/Templates/BlueTemplate';
+import BlueTemplate from './components/Templates/BlueTemplate/BlueTemplate';
 
 class App extends React.Component {
   constructor(props) {
@@ -83,6 +83,7 @@ class App extends React.Component {
         <div className="row">
           <div className="col-md-4">
             <Form
+              languages={languages}
               record={this.state.record}
               onSubmit={this.handleSubmit}
               removeScreenshot={this.removeScreenshot}
