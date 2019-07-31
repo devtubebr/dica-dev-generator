@@ -72,3 +72,17 @@ footer ul li span {
 footer ul li:last-child {
   margin-right: 0;
 }
+
+div.arrow {
+  position: absolute;
+  top: 260px;
+  left: 555px;
+  color: #fff;
+  font-size: 12px;
+  width: 135px;
+  text-align: right;
+}
+
+div.arrow p {
+  margin-top: 5px;
+}

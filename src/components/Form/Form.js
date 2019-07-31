@@ -46,6 +46,18 @@ const Form = props => {
           </small>
       </div>
 
+      <div className="form-group form-check">
+        <input
+          type="checkbox"
+          checked={props.record.has_next}
+          onChange={props.handleChange}
+          className="form-check-input"
+          name='has_next'
+          id="has_next" />
+
+        <label className="form-check-label" htmlFor="has_next">Essa dica será múltipla.</label>
+      </div>
+
       <div className="form-group">
         <input
           type='file'

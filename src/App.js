@@ -17,24 +17,25 @@ class App extends React.Component {
         language: languagesEnum.PHP,
         description: '',
         screenshot: '',
-        snippet: ''
+        snippet: '',
+        has_next: false
       }
     };
   }
 
   handleChange = e => {
+    const value = (e.target.type === 'checkbox' ? e.target.checked : e.target.value);
+
     this.setState({
       record: {
         ...this.state.record,
-        [e.target.name]: [e.target.value]
+        [e.target.name]: value
       },
     });
 
     if (e.target.name === 'language') {
       const value = e.target.value;
       const selectedLanguage = (value !== '' ? languages[value] : {});
-
-      console.log(value);
 
       this.setState({ selectedLanguage });
     }
@@ -95,6 +96,7 @@ class App extends React.Component {
           <div className="col-md-8">
             <div className="stage">
               <BlueTemplate
+                hideArrow={!this.state.record.has_next}
                 record={this.state.record}
                 selectedLanguage={this.state.selectedLanguage} />
             </div>

@@ -5,8 +5,13 @@ import PropTypes from 'prop-types';
 import './BlueTemplate.css';
 
 const BlueTemplate = props => {
+  console.log(props.hideArrow);
   return (
     <>
+      <div className={classnames('arrow', {'d-none': props.hideArrow})}>
+        <img src="/assets/images/seta.png" alt="seta" width="60" />
+        <p>Deslize para<br />ver mais...</p>
+      </div>
       <header>
         <img
           src={props.selectedLanguage.src}
@@ -48,11 +53,13 @@ const BlueTemplate = props => {
 
 BlueTemplate.propTypes = {
   record: PropTypes.object.isRequired,
-  selectedLanguage: PropTypes.object
+  selectedLanguage: PropTypes.object,
+  hideArrow: PropTypes.bool
 };
 
 BlueTemplate.defaultValues = {
-  selectedLanguage: {}
+  selectedLanguage: {},
+  hideArrow: true
 };
 
 export default BlueTemplate;
