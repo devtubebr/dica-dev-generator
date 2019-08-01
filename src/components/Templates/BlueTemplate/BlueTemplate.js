@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import './BlueTemplate.css';
 
 const BlueTemplate = props => {
-  console.log(props.hideArrow);
   return (
     <>
       <div className={classnames('arrow', {'d-none': props.hideArrow})}>

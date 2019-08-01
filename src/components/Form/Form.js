@@ -60,6 +60,7 @@ const Form = props => {
 
       <div className="form-group">
         <input
+          key={props.record.fileInputKey}
           type='file'
           accept="image/*"
           onChange={props.handleChange}

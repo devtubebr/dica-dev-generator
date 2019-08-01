@@ -17,6 +17,7 @@ class App extends React.Component {
         language: languagesEnum.PHP,
         description: '',
         screenshot: '',
+        fileInputKey: new Date(),
         snippet: '',
         has_next: false
       }
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.setState({
       record: {
         ...this.state.record,
+        fileInputKey: (e.target.name === 'screenshot' ? e.target.value : new Date()),
         [e.target.name]: value
       },
     });
