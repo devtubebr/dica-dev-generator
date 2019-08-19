@@ -55,18 +55,36 @@ footer ul {
 footer ul li {
   list-style-type: none;
   float: left;
-  margin-right: 20px;
+  margin-right: 8px;
 }
 
 footer ul li i {
-  font-size: 30px !important;
-  margin-right: 8px;
+  margin-top: 6px;
+  font-size: 20px !important;
+  margin-right: 5px;
   float: left;
 }
 
 footer ul li span {
   margin-top: 7px;
   float: left;
+  font-size: 12px;
+}
+
+footer img#footer-logo {
+  float: left;
+  margin-right: 20px;
+}
+
+footer section#fabweb {
+  float: left;
+  margin-top: -18px;
+}
+
+footer section#fabweb p {
+  padding: 0;
+  margin: 0 0 4px 0;
+  font-size: 10px;
 }
 
 footer ul li:last-child {

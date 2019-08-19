@@ -65,7 +65,6 @@ const Form = props => {
           accept="image/*"
           onChange={props.handleChange}
           name='screenshot'
-          required
           className='form-control'
           placeholder='Screenshot da dica...' />
 

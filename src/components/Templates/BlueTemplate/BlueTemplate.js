@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import logo from '../../../assets/images/logo-devtube.png';
+import logoFabweb from '../../../assets/images/logo-fabweb.png';
 import PropTypes from 'prop-types';
 import './BlueTemplate.css';
 
@@ -30,7 +31,13 @@ const BlueTemplate = props => {
         #dica<strong>Do</strong>Dev
       </div>
       <footer>
-        <img src={logo} width="120" alt='Logo Devtube' />
+        <img src={logo} id='footer-logo' width="120" alt='Logo Devtube' />
+
+        <section id="fabweb">
+          <p>Patrocínio</p>
+          <img src={logoFabweb} width="80" alt="Logo Fabweb"/>
+        </section>
+
         <ul>
           <li>
             <i className="fa fa-facebook-square"></i>
