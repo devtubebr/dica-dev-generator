@@ -93,12 +93,16 @@ footer ul li:last-child {
 
 div.arrow {
   position: absolute;
-  top: 260px;
-  left: 555px;
+  top: 450px;
+  left: 618px;
   color: #fff;
   font-size: 12px;
-  width: 135px;
+  width: 70px;
   text-align: right;
+}
+
+div.arrow img {
+  max-width: 40px;
 }
 
 div.arrow p {
