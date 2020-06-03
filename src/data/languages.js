@@ -8,7 +8,9 @@ export const languagesEnum = {
   JAVASCRIPT: 2,
   PHP: 1,
   PYTHON: 3,
-  SQL: 4
+  SQL: 4,
+  REACT: 8,
+  NODEJS: 9
 };
 
 /**
@@ -56,6 +58,18 @@ export const languages = Object.freeze({
     name: 'SQL',
     src: '/assets/images/logo-sql.png',
     width: '50'
+  },
+  [languagesEnum.REACT]: {
+    id: languagesEnum.REACT,
+    name: 'ReactJS',
+    src: '/assets/images/logo-react.png',
+    width: '60'
+  },
+  [languagesEnum.NODEJS]: {
+    id: languagesEnum.NODEJS,
+    name: 'NodeJS',
+    src: '/assets/images/logo-nodejs.png',
+    width: '88'
   }
 });
 
